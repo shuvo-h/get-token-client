@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       Fresh App
-    
+      New line added
     </div>
   );
 }
