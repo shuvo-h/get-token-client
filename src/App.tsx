@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
+import TheLayout from "./views/pages/theLayOut/TheLayout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">empty</header>
-      <h1>Testing ...</h1>
+    <div>
+      <TheLayout></TheLayout>
     </div>
   );
 }
