@@ -5,7 +5,7 @@ function App() {
       Fresh App
       New line added
       <h2>Hello The Code Of Duty</h2>
-      <h3>Hello world</h3>
+      <h2>Banner</h2>
     </div>
   );
 }
