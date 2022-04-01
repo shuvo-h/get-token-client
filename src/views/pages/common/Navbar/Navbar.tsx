@@ -3,8 +3,8 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
     return (
-        <div className="container mx-auto">
-            <div className="navbar_wrap flex justify-between items-center border-2">
+        <div className="container mx-auto bg-black text-white">
+            <div className="navbar_wrap flex justify-between items-center py-5">
                 <div>
                     <h1 className="text-2xl font-bold">Get-Tokens</h1>
                 </div>
@@ -21,8 +21,8 @@ const Navbar = () => {
                         <FaUserCircle className="inline-block" />
                         <span className="ml-5">Name</span>
                     </div>
-                    <div className="userMenu absolute top-12 right-20">
-                        <div className="bg-white rounded-xl drop-shadow-lg w-48 ">
+                    <div className="userMenu absolute top-14 right-24">
+                        <div className="bg-white rounded-xl drop-shadow-lg w-48 text-black">
                             <div className='flex flex-col justify-items-start gap-y-4 py-5 px-2 font-medium text-lg  '>
                                 <li className="list-none">Profile</li>
                                 <hr />  
