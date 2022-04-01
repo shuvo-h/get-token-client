@@ -5,7 +5,10 @@ const Header = () => {
     return (
         <div>
             <Navbar />
-            header
+            {/* booking form  */}
+            <div className='container mx-auto'>
+                this is booking form 
+            </div>
         </div>
     );
 };
