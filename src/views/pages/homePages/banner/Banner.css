@@ -1,0 +1,52 @@
+.banner-section{
+    padding: 25px 100px;
+    height: 110vh;
+    width: auto;
+}
+.banner-content{
+    width: auto;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 20px;
+}
+.banner-content button{
+    font-size: 1.5em;
+    border: 2px solid white;
+    padding: 4px 15px;
+    border-radius: 6px;
+    margin-top: -190px;
+}
+.banner-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 30vh;
+}
+.banner-text h2{
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+}
+
+/*----------------- Media Queary ------------------*/
+
+@media only screen and (max-width: 768px) {
+    .banner-section{
+        height: 60vh;
+        padding: 20px 30px;
+        }
+    .banner-text{
+        height: 22vh;
+    }
+    .banner-text h2{
+        font-size: 1.6em;
+        font-weight: 600;
+            }
+    .banner-content button{
+        font-size: 1.3em;
+        padding: 3px 10px;
+        border: 1.4px solid white;
+    }
+}
