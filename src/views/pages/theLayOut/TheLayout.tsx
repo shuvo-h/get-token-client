@@ -12,6 +12,7 @@ const TheLayout = () => {
             <div>
                 <Main></Main>
             </div>
+            
             <div>
                 <Footer></Footer>
             </div>

@@ -63,7 +63,7 @@ const Footer = () => {
             <div className="text-center">
                 <div className='max-w-7xl  py-4 mx-auto'>
                    <div>
-                       &copy; <strong><span>GetTokens</span></strong> All Rights Reserveddd
+                       &copy; <strong><span>GetTokens</span></strong> All Rights Reserved
                     </div>
                     
                 </div>
