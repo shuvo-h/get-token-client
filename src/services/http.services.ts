@@ -20,10 +20,10 @@ class Request {
     async get(url:string):Promise<AxiosResponse>{
         return instance.get(url).then(res=>res)
     }
-    async post(url:string):Promise<AxiosResponse>{
+    async post(url:string,body:any):Promise<AxiosResponse>{
         return instance.post(url).then(res=>res)
     }
-    async update(url:string):Promise<AxiosResponse>{
+    async update(url:string,body:any):Promise<AxiosResponse>{
         return instance.patch(url).then(res=>res)
     }
     async delete(url:string):Promise<AxiosResponse>{
@@ -33,4 +33,4 @@ class Request {
 
 const httpReq = new Request();
 
-export default httpReq;
+export default httpReq
