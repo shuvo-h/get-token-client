@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 
+
 const Navbar = () => {
     return (
         <div className="container mx-auto bg-black text-white">

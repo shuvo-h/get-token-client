@@ -3,6 +3,8 @@ import Footer from '../common/footer/Footer';
 import Header from '../common/header/Header';
 import Main from '../common/main/Main';
 import Home from '../homePages/home/Home';
+import Login from '../login/Login';
+import Registration from '../registration/Registration';
 
 
 const TheLayout = () => {
@@ -10,6 +12,12 @@ const TheLayout = () => {
         <div>
             <div>
                 <Header></Header>
+            </div>
+            <div>
+                < Login />
+            </div>
+            <div>
+                < Registration />
             </div>
             <div>
                 <Home />
