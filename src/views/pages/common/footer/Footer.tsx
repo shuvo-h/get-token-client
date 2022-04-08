@@ -1,5 +1,7 @@
 import React from 'react';
 import './Footer.css';
+// import { FaChevronRight } from 'react-icons/fa';
+import { BiChevronRight } from 'react-icons/bi';
 
 const Footer = () => {
     return (
@@ -20,8 +22,8 @@ const Footer = () => {
                    </div>
                    <div className='mb-5'>
                      <h4 className='pb-4'>Useful Links</h4> 
-                     <ul className='text-gray-500'>
-                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Home</a></li>
+                     <ul className='text-gray-500 '>
+                         <li  className='pb-4  '> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">  Home</a></li>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">About us</a> </li>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Services</a> </li>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Terms of services</a> </li>
@@ -63,7 +65,7 @@ const Footer = () => {
             <div className="text-center">
                 <div className='max-w-7xl  py-4 mx-auto'>
                    <div>
-                       &copy; <strong><span>GetTokens</span></strong> All Rights Reserveddd
+                       &copy; <strong><span>GetTokens</span></strong> All Rights Reserved
                     </div>
                     
                 </div>
@@ -76,3 +78,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+{/* < FaChevronRight className='text-yellow-500' /> */}
