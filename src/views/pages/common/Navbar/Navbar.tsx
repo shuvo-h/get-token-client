@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -27,8 +28,9 @@ const Navbar = () => {
                             <div className='flex flex-col justify-items-start gap-y-4 py-5 px-2 font-medium text-lg  '>
                                 <li className="list-none">Profile</li>
                                 <hr />  
-                                <li className="list-none">Register</li>
-                                <li className="list-none">Login</li>
+                                <li className="list-none"><NavLink to="/registration">Register</NavLink></li>
+                                <li className="list-none"><NavLink to="/login">Login</NavLink></li>
+                                
                             </div>
                         </div>
                     </div>

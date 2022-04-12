@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../common/footer/Footer';
 import Header from '../common/header/Header';
 import Main from '../common/main/Main';
+import Navbar from '../common/Navbar/Navbar';
 import Home from '../homePages/home/Home';
 import Login from '../login/Login';
 import Registration from '../registration/Registration';
@@ -11,16 +12,17 @@ const TheLayout = () => {
     return (
         <div>
             <div>
-                <Header></Header>
+                {/* <Header></Header> */}
+                {/* <Navbar></Navbar> */}
             </div>
             <div>
-                < Login />
+                {/* < Login /> */}
             </div>
             <div>
-                < Registration />
+                {/* < Registration /> */}
             </div>
             <div>
-                <Home />
+                {/* <Home /> */}
             </div>
             <div>
                 <Main></Main>
