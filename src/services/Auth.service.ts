@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { ILoginDataType, RegInfoType } from "../type/allTypes";
+import { ILoginDataType, RegInfoType, userType } from "../type/allTypes";
 import httpReq from "./http.services";
 
 type err = {
@@ -7,10 +7,10 @@ type err = {
 }
 
 class MainAuthService {
-    async login(payload:ILoginDataType): Promise<AxiosResponse> {
-      const ResponseData = await httpReq.post("/authenticate/login",payload); // API endpoint
+    async login(payload:ILoginDataType): Promise<userType> {
+      const {data} = await httpReq.post("/authenticate/login",payload); // API endpoint
       // logInfoType
-      return ResponseData.data
+      return data
     }
     async registerMember(payload:RegInfoType): Promise<any> {
       const ResponseData = await httpReq.post("/register",payload); // API endpoint

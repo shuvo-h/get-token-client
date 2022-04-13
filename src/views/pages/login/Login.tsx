@@ -1,5 +1,7 @@
 import { type } from 'os';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from '../../../redux/slices/authSlice';
 import AuthService from '../../../services/Auth.service';
 import { logInfoType } from '../../../type/allTypes';
 import './Login.css';
@@ -9,22 +11,36 @@ const fakeUser = {
     password:"Aa@12345678"
 }
 
-
 const Login = () => {
+    const dispatch = useDispatch();
     const [loginInfo,setLoginInfo] = useState<logInfoType>(fakeUser as logInfoType);
 
     const handleLogin =  async(e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
+        dispatch(setUserInfo({user:null,status: 'pending',error:null}))
         try {
             const user =  await AuthService.login(loginInfo)
-            console.log(user);
-    
+            if (user.email) {
+                dispatch(setUserInfo({user,status: 'success',error:null}))
+            }else{
+                dispatch(setUserInfo({user:null,status: 'error',error:"Unknown error occured"}))
+            }
         } catch (err) {
-            console.log(err);
+            dispatch(setUserInfo({user:null,status: 'error',error:"Something went wrong. Try again!"}))
         }
     }
 
-    const handleLogout = () =>{
+    const handleLogout = async() =>{
+        try {
+            const result =  await AuthService.logoutUser();
+            if (result.user == null) {
+                dispatch(setUserInfo({user: result.user,status: 'success',error:null}))
+            }
+        } catch (err) {
+            console.log(err);
+            dispatch(setUserInfo({user:null,status: 'error',error:err}))
+        }
+
         try {
             fetch(`${process.env.REACT_APP_API_BASE_URL}/authenticate/logout`,{
                 method:"DELETE",
