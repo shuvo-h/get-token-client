@@ -17,3 +17,8 @@ export interface RegInfoType {
     };
     birthday: string;
 }
+
+export interface logInfoType  {
+    email: string,
+    password: string
+}

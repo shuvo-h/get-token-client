@@ -40,12 +40,12 @@ const Registration = () => {
             newUser.avatar = image
         }
         try {
-                fetch("http://localhost:5000/authenticate/registration",{
-                method:"POST",
-                headers:{
-                    "Content-type":"application/json"
-                },
-                body: JSON.stringify(newUser)
+                fetch(`${process.env.REACT_APP_API_BASE_URL}/authenticate/registration`,{
+                    method:"POST",
+                    headers:{
+                        "Content-type":"application/json"
+                    },
+                    body: JSON.stringify(newUser)
                 })
                 .then(res=>res.json())
                 .then(data=>console.log(data))

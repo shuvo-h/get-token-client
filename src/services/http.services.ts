@@ -10,6 +10,7 @@ const instance:AxiosInstance = axios.create(axiosConfig);
 instance.interceptors.request.use(function(config){
     return {
         ...config,
+        withCredentials:true,
         headers:{Authorization: `Bearer ${"access_token"}`}
     }
 }, function(error){
@@ -21,7 +22,7 @@ class Request {
         return instance.get(url).then(res=>res)
     }
     async post(url:string,body:any):Promise<AxiosResponse>{
-        return instance.post(url).then(res=>res)
+        return instance.post(url,body).then(res=>res)
     }
     async update(url:string,body:any):Promise<AxiosResponse>{
         return instance.patch(url).then(res=>res)
