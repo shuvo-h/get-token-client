@@ -2,14 +2,10 @@ import { AxiosResponse } from "axios";
 import { ILoginDataType, RegInfoType, userType } from "../type/allTypes";
 import httpReq from "./http.services";
 
-type err = {
-  errors: any
-}
 
 class MainAuthService {
     async login(payload:ILoginDataType): Promise<userType> {
       const {data} = await httpReq.post("/authenticate/login",payload); // API endpoint
-      // logInfoType
       return data
     }
     async registerMember(payload:RegInfoType): Promise<any> {
@@ -18,10 +14,16 @@ class MainAuthService {
       return ResponseData
     }
 
+    async keepLoggedIn():Promise<userType>{
+      const {data} = await httpReq.get("/onAuthStateChange");
+      return data;
+    }
+
     async logoutUser():Promise<any>{
       const ResponseData = await httpReq.delete("/logout");
       return ResponseData;
     }
+
   }
   
   const AuthService = new MainAuthService();
