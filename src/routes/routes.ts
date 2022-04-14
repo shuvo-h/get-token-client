@@ -23,4 +23,6 @@ export const allRoutes = [
         Component: Registration,
         roles:["*"]  // everyone can access
     },
+
+    
 ]
