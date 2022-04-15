@@ -1,4 +1,5 @@
 import React from "react"
+import OwnerDashboardLayout from "../views/pages/ownerDashboard/OwnerDashboardLayout"
 
 const Home = React.lazy(()=>import("../views/pages/homePages/home/Home"))
 const Login  = React.lazy(()=>import("../views/pages/login/Login"))
@@ -23,6 +24,10 @@ export const allRoutes = [
         Component: Registration,
         roles:["*"]  // everyone can access
     },
-
-    
+    {
+        path: "/dashboard/owner/*",
+        name: "Owner Dashboard",
+        Component: OwnerDashboardLayout,
+        roles:["*"]  // everyone can access
+    },
 ]

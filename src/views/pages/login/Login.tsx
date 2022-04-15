@@ -38,21 +38,7 @@ const Login = () => {
             }
         } catch (err) {
             console.log(err);
-            dispatch(setUserInfo({user:null,status: 'error',error:err}))
-        }
-
-        try {
-            fetch(`${process.env.REACT_APP_API_BASE_URL}/authenticate/logout`,{
-                method:"DELETE",
-                credentials: 'include',  
-                headers:{
-                    "Content-type":"application/json"
-                }
-            })
-            .then(res=>res.json())
-            .then(data=>console.log(data))
-        } catch (error) {
-            console.log(error);
+            dispatch(setUserInfo({user:null,status: 'error',error:"Something went wrong!"}))
         }
     }
 
