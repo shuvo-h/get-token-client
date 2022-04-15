@@ -2,7 +2,7 @@ import React from 'react';
 
 const Two = () => {
     return (
-        <div>
+        <div className='text-center'>
             Two page
         </div>
     );
