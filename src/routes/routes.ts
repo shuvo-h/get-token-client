@@ -1,4 +1,5 @@
 import React from "react"
+import TestHotelInfoUpload from "../views/pages/login/TestHotelInfoAdd"
 
 const Home = React.lazy(()=>import("../views/pages/homePages/home/Home"))
 const Login  = React.lazy(()=>import("../views/pages/login/Login"))
@@ -25,12 +26,12 @@ export const allRoutes = [
         Component: Registration,
         roles:["*"]  // everyone can access
     },
-    // {
-    //     path: "/testhotelupload",
-    //     name: "test API",
-    //     Component: TestHotelInfoUpload,
-    //     roles:["*"]  // everyone can access
-    // },
+    {
+        path: "/testhotelupload",
+        name: "test API",
+        Component: TestHotelInfoUpload,
+        roles:["*"]  // everyone can access
+    },
     {
         path: "/dashboard/owner/*",
         name: "Owner Dashboard",

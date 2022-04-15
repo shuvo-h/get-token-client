@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, Action, createAsyncThunk } from '@reduxjs/toolkit';
+import AuthService from '../../services/Auth.service';
 import { userType } from '../../type/allTypes';
 
 type  statusType = "idle" | "pending" | "success" | "error";
@@ -7,6 +8,11 @@ type userStateType = {
     user: userType | null
     error: string |null 
 }
+
+export const fetchUser = createAsyncThunk("user/user", ()=>{
+    const response =  AuthService.keepLoggedIn()
+    return response;
+})
 const userState: userStateType = {
     status: "idle",
     user: null,
@@ -19,13 +25,27 @@ const authSlice = createSlice({
     reducers:{
         // set user to state 
         setUserInfo: (state:userStateType,action:{payload:userStateType}) =>{
-            console.log(action,"called");
-            
             state.user = action.payload.user;
             state.status = action.payload.status;
-        }
+        },
     },
-    extraReducers: (builder) =>{}
+    extraReducers: (builder) =>{
+        builder.addCase(fetchUser.pending, (state,action)=>{
+            state.status = "pending";
+            state.user = null;
+            state.error = null;
+        })
+        builder.addCase(fetchUser.fulfilled, (state,action)=>{
+            state.status = "success";
+            state.user = action.payload;
+            state.error = null;
+        })
+        builder.addCase(fetchUser.rejected, (state,action)=>{
+            state.status = "idle";
+            state.user = null;
+            state.error = "Some thing went wrong. Login Again!";
+        })
+    }
 
 })
 

@@ -15,7 +15,7 @@ class MainAuthService {
     }
 
     async keepLoggedIn():Promise<userType>{
-      const {data} = await httpReq.get("/onAuthStateChange");
+      const {data} = await httpReq.get("/authenticate/onAuthStateChange");
       return data;
     }
 

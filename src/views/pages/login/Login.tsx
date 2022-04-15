@@ -14,13 +14,15 @@ const fakeUser = {
 const Login = () => {
     const dispatch = useDispatch();
     const [loginInfo,setLoginInfo] = useState<logInfoType>(fakeUser as logInfoType);
-
+    
     const handleLogin =  async(e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
         dispatch(setUserInfo({user:null,status: 'pending',error:null}))
         try {
             const user =  await AuthService.login(loginInfo)
             if (user.email) {
+                console.log(user);
+                
                 dispatch(setUserInfo({user,status: 'success',error:null}))
             }else{
                 dispatch(setUserInfo({user:null,status: 'error',error:"Unknown error occured"}))
