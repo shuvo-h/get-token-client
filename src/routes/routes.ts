@@ -4,6 +4,7 @@ import OwnerDashboardLayout from "../views/pages/ownerDashboard/OwnerDashboardLa
 const Home = React.lazy(()=>import("../views/pages/homePages/home/Home"))
 const Login  = React.lazy(()=>import("../views/pages/login/Login"))
 const Registration  = React.lazy(()=>import("../views/pages/registration/Registration"))
+const TestHotelInfoUpload = React.lazy(()=>import("../views/pages/login/TestHotelInfoAdd"))
 
 export const allRoutes = [
     {
@@ -22,6 +23,12 @@ export const allRoutes = [
         path: "/registration",
         name: "Registration",
         Component: Registration,
+        roles:["*"]  // everyone can access
+    },
+    {
+        path: "/testhotelupload",
+        name: "test API",
+        Component: TestHotelInfoUpload,
         roles:["*"]  // everyone can access
     },
     {
