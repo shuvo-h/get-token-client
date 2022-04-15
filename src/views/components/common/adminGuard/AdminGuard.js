@@ -1,11 +1,11 @@
 import React from 'react';
 
-const demo = () => {
+const AdminGuard = () => {
     return (
         <div>
-            delete this file
+            AdminGuard
         </div>
     );
 };
 
-export default demo;
+export default AdminGuard;
