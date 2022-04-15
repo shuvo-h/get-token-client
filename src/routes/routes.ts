@@ -1,10 +1,10 @@
 import React from "react"
-import OwnerDashboardLayout from "../views/pages/ownerDashboard/OwnerDashboardLayout"
 
 const Home = React.lazy(()=>import("../views/pages/homePages/home/Home"))
 const Login  = React.lazy(()=>import("../views/pages/login/Login"))
 const Registration  = React.lazy(()=>import("../views/pages/registration/Registration"))
-const TestHotelInfoUpload = React.lazy(()=>import("../views/pages/login/TestHotelInfoAdd"))
+const AdminDashboard = React.lazy(()=>import("../views/pages/adminDashboard/AdminDashboardLayout"))
+const OwnerDashboardLayout = React.lazy(()=>import("../views/pages/ownerDashboard/OwnerDashboardLayout"))
 
 export const allRoutes = [
     {
@@ -25,16 +25,22 @@ export const allRoutes = [
         Component: Registration,
         roles:["*"]  // everyone can access
     },
-    {
-        path: "/testhotelupload",
-        name: "test API",
-        Component: TestHotelInfoUpload,
-        roles:["*"]  // everyone can access
-    },
+    // {
+    //     path: "/testhotelupload",
+    //     name: "test API",
+    //     Component: TestHotelInfoUpload,
+    //     roles:["*"]  // everyone can access
+    // },
     {
         path: "/dashboard/owner/*",
         name: "Owner Dashboard",
         Component: OwnerDashboardLayout,
         roles:["*"]  // everyone can access
     },
+    {
+        path: "/dashboard/admin/*",
+        name: "Admin Dashboard",
+        Component: AdminDashboard,
+        roles: ["*"] // everyone can access
+    }
 ]
