@@ -8,7 +8,6 @@ const hotelAddData = {
     img_uri:[""],
     description:"lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ",
     owner_email:"",
-    owner_id:"",
     contact_email:"ab@gmail.com",
     contact_phone:"",
     contact_Extra_info:"",

@@ -3,24 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import useAuthAccess from '../../../hooks/useAuthAccess';
 import { fetchUser } from '../../../redux/slices/authSlice';
 import { RootState } from '../../../redux/store/store';
+import OwnerService from '../../../services/ownerServices/hotel.service';
+import { hotelImgType } from '../../../type/ownerTypes';
 
 type hotelFormType = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> |  React.ChangeEvent<HTMLTextAreaElement>
 
-type newHotelInfoType = {
-    hotelName: string,
-    address: string,
-    city: string,
-    country: string,
-    totalRoom: number,
-    img_uri: string[],
-    description: string,
-    owner_email: string,
-    owner_id: string,
-    contact_email: string,
-    contact_phone: string,
-    contact_Extra_info: string,
-    hotel_category: "1 star" | "2 star" | "3 star" | "4 star" |"5 star" | "General" | "Other",
-}
+
 
 const TestHotelInfoUpload = () => {
     // load and get user information 
@@ -31,7 +19,9 @@ const TestHotelInfoUpload = () => {
     const [countries,setCountries] = useState<any>([]);
     const [availableCities,setAvailableCities] = useState([]);
     const hotelCategory = ["1 star","2 star","3 star","4 star","5 star","General","Other"];
-    const [images,setImages] = useState<any[]>([]);
+    const [images,setImages] = useState<hotelImgType[]>([]);
+    const [sendError,setSendError] = useState<string>("");
+
 // console.log(newHotelInfo);
 
     // load all country information 
@@ -47,6 +37,7 @@ const TestHotelInfoUpload = () => {
                if (item.country === newHotelInfo.country) {
                 setAvailableCities( item.cities);
                }
+               return null
            });
        }
        
@@ -57,22 +48,22 @@ const TestHotelInfoUpload = () => {
         _newHotelInfo[e.target.name] = e.target.value;
         setNewHotelInfo(_newHotelInfo)
     }
-    // const dispatch =useDispatch()
-    // useEffect(()=>{
-    //     dispatch(getUserStateChange())
-    // },[])
-    
 
-    
-    
-    const handleHotelSubmit = (e: React.FormEvent<HTMLButtonElement>)  =>{
-        e.preventDefault();
-        // bring this ID from redux during submitting 
-        // <label htmlFor="">Owner ID</label>
-        // <input type="text" name='owner_id' /><br />
-
-        // <label htmlFor="">Owner Email</label>
-        // <input onChange={e=>handleInputChange(e)} type="email" name='owner_email' /><br />
+    const handleHotelSubmit = ()  =>{
+        if (user.user?.email) {
+            newHotelInfo.owner_email = user.user.email;
+            newHotelInfo.img_uri = images;
+            
+            try {
+                OwnerService.addNewHotel(newHotelInfo);
+                
+            } catch (err) {
+                // setSendError(err.message);
+                console.log(err);
+                
+            }
+            
+        }
     }
 
     const handleImageChange = (e:any) =>{
@@ -81,7 +72,7 @@ const TestHotelInfoUpload = () => {
         reader.readAsDataURL(file);
         reader.onload = () =>{
             if (typeof reader.result == "string") {
-                setImages([...images,{uri:reader.result,title:file.name,id:Date.now()}]);
+                setImages([...images,{uri:reader.result,title:file.name,id:`${Date.now()}`}]);
                 e.target.value = "";
             }
         }
@@ -103,16 +94,16 @@ const TestHotelInfoUpload = () => {
                 <input type="text" name='country' /><br />
 
                 <label htmlFor="">Choose your country</label>
-                <select name="country" id="" onChange={e=>handleInputChange(e)}>
-                    <option value="a" disabled selected>select country</option>
+                <select name="country" id="" defaultValue="select country" onChange={e=>handleInputChange(e)}>
+                    <option value="select country" disabled>select country</option>
                     {
                         countries.map((item:any,id:number)=><option value={item.country} key={id}>{item.country}</option>)
                     }
                 </select> <br />
 
                 <label htmlFor="">Choose your city</label>
-                <select name="city" id="" onChange={e=>handleInputChange(e)}>
-                    <option disabled selected>select city</option>
+                <select name="city" id="" defaultValue={"select city"} onChange={e=>handleInputChange(e)}>
+                    <option value={"select city"} disabled>select city</option>
                     {
                         availableCities.map((city:any,id:number)=><option value={city} key={id}>{city}</option>)
                     }
@@ -137,14 +128,14 @@ const TestHotelInfoUpload = () => {
                 <input onChange={e=>handleInputChange(e)} type="text" name='contact_Extra_info' /><br />
 
                 <label htmlFor="">Hotel Category</label>
-                <select name="hotel_category" id="" onChange={e=>handleInputChange(e)}>
-                    <option disabled selected>select category</option>
+                <select name="hotel_category" defaultValue={"select category"} id="" onChange={e=>handleInputChange(e)}>
+                    <option value={"select category"} disabled>select category</option>
                     {
                         hotelCategory.map((ctg:any,id:number)=><option value={ctg} key={id}>{ctg}</option>)
                     }
                 </select> <br />
 
-                <button style={{backgroundColor:"lightgrey", border:"1px solid"}} onSubmit={(e)=>handleHotelSubmit(e)} type="submit">Submit</button>
+                <button style={{backgroundColor:"lightgrey", border:"1px solid"}} onClick={handleHotelSubmit} type="submit">Submit</button>
             </div>
 
             <div>
@@ -152,7 +143,7 @@ const TestHotelInfoUpload = () => {
                 <input onChange={(e)=>handleImageChange(e)} type="file" name='img_uri' multiple /><br />
                 <div>
                     {
-                        images.map(image=><p>{image.title}</p>)
+                        images.map((image,id)=><p key={id}>{image.title}</p>)
                     }
                 </div>
                 <div>
