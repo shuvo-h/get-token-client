@@ -3,14 +3,9 @@ import React, { useState } from 'react';
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "Chart_fill" },
-    { title: "Mail", src: "Chat" },
-    { title: "All hotels", src: "User", gap: true },
-    { title: "Schedule ", src: "Calendar" },
-    { title: "Search", src: "Search" },
-    { title: "Analytics", src: "Chart" },
-    { title: "Files ", src: "Folder", gap: true },
-    { title: "Setting", src: "Setting" },
+    { title: "Dashboard", src: "https://i.ibb.co/dQYCnxc/Chart-fill.png" },
+    { title: "Mail", src: "https://i.ibb.co/jHTpQkr/Chart.png" },
+    { title: "All hotels", src: "https://i.ibb.co/P6JVd5k/User.png", gap: true },
   ];
     return (
         <div>
@@ -20,14 +15,14 @@ const Sidebar = () => {
         } bg-dark-purple h-screen p-5  pt-8 relative duration-300`}
       >
         <img
-          src="../../../../assets/images/control.png"
+          src="https://i.ibb.co/ThpS7tH/control.png"
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
         <div className="flex gap-x-4 items-center">
           <img
-            src="../../../../assets/images/logo.png"
+            src="https://i.ibb.co/RCk6YDy/logo.png"
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
@@ -49,7 +44,7 @@ const Sidebar = () => {
                 index === 0 && "bg-light-white"
               } `}
             >
-              <img src={`../../../../assets/images/${Menu.src}.png`} />
+              <img src={`${Menu.src}`} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </span>
