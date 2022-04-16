@@ -3,7 +3,7 @@ import httpReq from "../http.services";
 
 class OwnerHotelAllService {
     async addNewHotel(payload:newHotelInfoType){
-        const {data} = await httpReq.post("/hotels/.hotel",payload)
+        const {data} = await httpReq.post("/hotels/hotel",payload)
         return data
     }
 

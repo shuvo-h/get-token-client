@@ -55,8 +55,9 @@ const TestHotelInfoUpload = () => {
             newHotelInfo.img_uri = images;
             
             try {
-                OwnerService.addNewHotel(newHotelInfo);
-                
+                OwnerService.addNewHotel(newHotelInfo)
+                .then(data=>console.log(data))
+
             } catch (err) {
                 // setSendError(err.message);
                 console.log(err);
@@ -78,69 +79,82 @@ const TestHotelInfoUpload = () => {
         }
 
     }
+    console.log(user.user);
     
 
     return (
-        <div>
-            <h1 style={{fontSize:"25px", fontWeight:"700"}}>{user?.user?.name}</h1>
-            <div >
-                <label htmlFor="">Hotel Name</label>
-                <input onChange={e=>handleInputChange(e)} type="text" name='hotelName' /><br />
+        <div className='mx-auto  w-max'>
+            <h1 className='text-xl font-semibold text-center my-2'>Fillup the form with your hotel information</h1>
+            <div>
+                <div className='drop-shadow-md flex justify-end'>
+                    <p>Hotel Name:</p>
+                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block'  onChange={e=>handleInputChange(e)} type="text" name='hotelName' /><br />
+                </div>
 
-                <label htmlFor="">Hotel Address</label>
-                <input onChange={e=>handleInputChange(e)} type="text" name='address' /><br />
+                <div className='drop-shadow-md flex justify-end'>
+                    <p>Hotel Address:</p>
+                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e)} type="text" name='address' /><br />
+                </div>
                 
-                <label htmlFor="">Country</label>
-                <input type="text" name='country' /><br />
+                <div className='drop-shadow-md flex justify-end'>
+                    <p>Choose your country:</p>
+                    <select style={{width:"500px"}} className='ml-2 border-2 border-solid block'  name="country" id="" defaultValue="select country" onChange={e=>handleInputChange(e)}>
+                        <option value="select country" disabled>select country</option>
+                        {
+                            countries.map((item:any,id:number)=><option value={item.country} key={id}>{item.country}</option>)
+                        }
+                    </select>
+                </div>
+                <div className='drop-shadow-md flex justify-end'>
+                    <p>Choose your city</p>
+                    <select style={{width:"500px"}} className='ml-2 border-2 border-solid block' name="city" id="" defaultValue={"select city"} onChange={e=>handleInputChange(e)}>
+                        <option value={"select city"} disabled>select city</option>
+                        {
+                            availableCities.map((city:any,id:number)=><option value={city} key={id}>{city}</option>)
+                        }
+                    </select>
+                </div>
+               
+                <div className='drop-shadow-md flex justify-end'>
+                    <p>Total Room</p>
+                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e)} type="number" name='totalRoom' /><br />
+                </div>
 
-                <label htmlFor="">Choose your country</label>
-                <select name="country" id="" defaultValue="select country" onChange={e=>handleInputChange(e)}>
-                    <option value="select country" disabled>select country</option>
-                    {
-                        countries.map((item:any,id:number)=><option value={item.country} key={id}>{item.country}</option>)
-                    }
-                </select> <br />
-
-                <label htmlFor="">Choose your city</label>
-                <select name="city" id="" defaultValue={"select city"} onChange={e=>handleInputChange(e)}>
-                    <option value={"select city"} disabled>select city</option>
-                    {
-                        availableCities.map((city:any,id:number)=><option value={city} key={id}>{city}</option>)
-                    }
-                </select> <br />
-
-
-                <label htmlFor="">Total Room</label>
-                <input onChange={e=>handleInputChange(e)} type="number" name='totalRoom' /><br />
 
                
+                <div  className='drop-shadow-md flex justify-end'>
+                    <p>Contact Email</p>
+                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e)} type="email" name='contact_email' /><br />
 
-                <label htmlFor="">About hotel</label>
-                <textarea onChange={e=>handleInputChange(e)} name="description" id="" cols={30} rows={10}></textarea> <br />
-
-                <label htmlFor="">Contact Email</label>
-                <input onChange={e=>handleInputChange(e)} type="email" name='contact_email' /><br />
-
-                <label htmlFor="">Contact Phone number</label>
-                <input onChange={e=>handleInputChange(e)} type="tel" name='contact_phone' /><br />
-
-                <label htmlFor="">Additional Contact  info</label>
-                <input onChange={e=>handleInputChange(e)} type="text" name='contact_Extra_info' /><br />
-
-                <label htmlFor="">Hotel Category</label>
-                <select name="hotel_category" defaultValue={"select category"} id="" onChange={e=>handleInputChange(e)}>
-                    <option value={"select category"} disabled>select category</option>
-                    {
-                        hotelCategory.map((ctg:any,id:number)=><option value={ctg} key={id}>{ctg}</option>)
-                    }
-                </select> <br />
+                </div>
+                <div  className='drop-shadow-md flex justify-end'>
+                    <p>Contact Phone number</p>
+                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e)} type="tel" name='contact_phone' /><br />
+                </div>
+                <div  className='drop-shadow-md flex justify-end'>
+                    <p>Additional Contact  info</p>
+                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e)} type="text" name='contact_Extra_info' /><br />
+                </div>
+                <div  className='drop-shadow-md flex justify-end'>
+                    <p>Hotel Category</p>
+                    <select style={{width:"500px"}} className='ml-2 border-2 border-solid block' name="hotel_category" defaultValue={"select category"} id="" onChange={e=>handleInputChange(e)}>
+                        <option value={"select category"} disabled>select category</option>
+                        {
+                            hotelCategory.map((ctg:any,id:number)=><option value={ctg} key={id}>{ctg}</option>)
+                        }
+                    </select> <br />
+                </div>
+                <div  className='drop-shadow-md flex justify-end'>
+                    <p>About hotel</p>
+                    <textarea  style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e)} name="description" id="" ></textarea> <br />
+                </div>
 
                 <button style={{backgroundColor:"lightgrey", border:"1px solid"}} onClick={handleHotelSubmit} type="submit">Submit</button>
             </div>
 
             <div>
-                <label htmlFor="">Images of hotel</label>
-                <input onChange={(e)=>handleImageChange(e)} type="file" name='img_uri' multiple /><br />
+                <p >Images of hotel</p>
+                <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={(e)=>handleImageChange(e)} type="file" name='img_uri' multiple /><br />
                 <div>
                     {
                         images.map((image,id)=><p key={id}>{image.title}</p>)
