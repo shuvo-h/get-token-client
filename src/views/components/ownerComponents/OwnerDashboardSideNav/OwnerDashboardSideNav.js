@@ -10,10 +10,10 @@ const OwnerDashboardSideNav = () => {
     const [open, setOpen] = useState(true);
     const Menus = [
         { title: "Dashboard", src: "Chart_fill" },
-        { title: "Email", src: "Chat" },
-        { title: "Invoices", src: "User", },
-        { title: "Media ", src: "Calendar" },
-        { title: "Hotels", src: "Search" },
+        { title: "Email", src: "email" },
+        { title: "Invoices", src: "invoices", },
+        { title: "Media ", src: "media" },
+        { title: "Hotels", src: "hotels" },
     
         
       ];
@@ -62,7 +62,8 @@ const OwnerDashboardSideNav = () => {
               {/* <img src={`./src/assets/${Menu.src}.png`} /> */}
               <img src={x} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                {Menu.title}
+               
+                <NavLink to={`${Menu.src}`}>{Menu.title}</NavLink>
               </span>
             </li>
           ))}
