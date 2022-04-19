@@ -12,8 +12,7 @@ const Hotel = ({hotel}: hotelPropType) => {
     return (
         <div className='border border-2 p-3 rounded-md shadow'>
             <div>
-                {/* <img src={`${hotel.img_banner}`} alt="" /> */}
-                <img className='d-block mx-auto' src={bike} alt="" />
+                <img src={`${hotel?.img_uri[0]?.uri}`} alt="" />
             </div>
             <div className='text-center'>
                 <h5 className='font-bold'>{hotel.hotelName}</h5>

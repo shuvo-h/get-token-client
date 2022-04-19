@@ -19,6 +19,12 @@ export const allRoutes = [
         roles:["*"]  // everyone can access
     },
     {
+        path: "/home",
+        name: "Home",
+        Component: Home,
+        roles:["*"]  // everyone can access
+    },
+    {
         path: "/login",
         name: "Login",
         Component: Login,
@@ -37,7 +43,7 @@ export const allRoutes = [
         roles:["*"]  // everyone can access
     },
     {
-        path: `/hotels/hotel/:id`,
+        path: `/hotels/hotel/:hotel_id`,
         name: "SIngleHotel",
         Component: SIngleHotel,
         roles:["*"]  // everyone can access

@@ -10,7 +10,6 @@ class MainAuthService {
     }
     async registerMember(payload:RegInfoType): Promise<any> {
       const ResponseData = await httpReq.post("/register",payload); // API endpoint
-      console.log(ResponseData);
       return ResponseData
     }
 

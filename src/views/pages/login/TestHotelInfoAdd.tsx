@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import useAuthAccess from '../../../hooks/useAuthAccess';
-import { fetchUser } from '../../../redux/slices/authSlice';
 import { RootState } from '../../../redux/store/store';
 import OwnerService from '../../../services/ownerServices/hotel.service';
 import { addNewHotelType } from '../../../type/hotelType';
@@ -86,23 +85,18 @@ console.log(newHotelInfo);
         if (user.user?.email) {
             newHotelInfo.owner_email = user.user.email;
             newHotelInfo.img_uri = images;
-            /*
+            
             try {
                 OwnerService.addNewHotel(newHotelInfo)
-                .then(data=>console.log(data))
+                .then(data=>{
+                    if (data.result._id) {
+                        alert("Site added Successfully")
+                    }
+                })
             } catch (err) {
                 // setSendError(err.message);
                 console.log(err);
             }
-            */
-
-            fetch("http://localhost:5000/hotels/hotel",{
-                method:"POST",
-                headers:{"content-type":"application/json"},
-                body:JSON.stringify(newHotelInfo)
-            })
-            .then(res=>res.json())
-            .then(data=>console.log(data))
         }
 
     }

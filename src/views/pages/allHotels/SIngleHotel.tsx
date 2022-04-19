@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import HotelService from '../../../services/hotelPublicService/hotel.services';
 import { hotelImgType } from '../../../type/ownerTypes';
 
-type singleHotelType = {
+export type singleHotelType = {
     _id: string,
     hotelName: string,
     address: string,
@@ -22,44 +23,27 @@ type singleHotelType = {
     hotel_category: string
 }
 
-
-const aHole = {
-    _id: "6",
-    hotelName: "Hortoli modern and Hotel LTD",
-    address: "507, Diya bondor",
-    city: "Dhaka",
-    country: "bangladesh",
-    room: {
-        total: 308,
-        booked: 200,
-        available: 108
-    },
-    img_banner: " image banner url",
-    img_uri: [
-        {uri:`${"bike"}`,title:"hotel img 1",id:"a1"},
-    ],
-    description: "string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem string lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ",
-    contact_email: "string@miost.vofg",
-    contact_phone: "0155555555",
-    contact_Extra_info: "Fax: 6954025412",
-    hotel_category: `1 star`,
-}
-
 const SIngleHotel = () => {
-    const [hotel,setHotel]  = useState<singleHotelType>(aHole);
-    const {id} = useParams();
+    const [hotel,setHotel]  = useState<singleHotelType>({} as singleHotelType);
+    const {hotel_id} = useParams();
     const navigate = useNavigate();
-    // console.log(hotel);
+    console.log(hotel);
     
     useEffect(()=>{
-        // fetch the single hotel by ID using axios here to show the details 
-
-    },[])
+        if (hotel_id) {
+            HotelService.getSingleHotel(hotel_id)
+            .then(data=>{
+                if (data.success) {
+                    setHotel(data.hotel)
+                }
+            })
+        }
+    },[hotel_id])
 
     const handleRoom = (hotelId:string,roomType:string) =>{
         navigate(`/hotels/hotel/${hotelId}/rooms/${roomType}`);
     }
-    if (!id) {
+    if (!hotel_id) {
         return <div>Hotel Not Found!</div>
     }
     return (
@@ -91,20 +75,20 @@ const SIngleHotel = () => {
             </div>
             <div className='grid md:grid-cols-3 bg-gray-600 rounded text-white text-center py-8'>
                 <div className='my-2'>
-                    <div className='w-fit mx-auto px-3 rounded-lg cursor-pointer hover:text-blue-200' onClick={()=>handleRoom(id,"total")}>
-                        <h2 className='text-5xl text-blue-500 hover:text-blue-400'>{hotel.room.total}</h2>
+                    <div className='w-fit mx-auto px-3 rounded-lg cursor-pointer hover:text-blue-200' onClick={()=>handleRoom(hotel_id,"total")}>
+                        <h2 className='text-5xl text-blue-500 hover:text-blue-400'>{hotel.room?.total}</h2>
                         <h4 className='text-xl'>Total Rooms</h4>
                     </div>
                 </div>
                 <div className='my-2'>
-                    <div className='w-fit mx-auto px-3 rounded-lg cursor-pointer hover:text-blue-200' onClick={()=>handleRoom(id,"available")}>
-                        <h2 className='text-5xl text-blue-500 hover:text-blue-400'>{hotel.room.available}</h2>
+                    <div className='w-fit mx-auto px-3 rounded-lg cursor-pointer hover:text-blue-200' onClick={()=>handleRoom(hotel_id,"available")}>
+                        <h2 className='text-5xl text-blue-500 hover:text-blue-400'>{hotel.room?.available}</h2>
                         <h4 className='text-xl'>Available Rooms</h4>
                     </div>
                 </div>
                 <div className='my-2'>
-                    <div className='w-fit mx-auto px-3 rounded-lg cursor-pointer hover:text-blue-200' onClick={()=>handleRoom(id,"booked")}>
-                        <h2 className='text-5xl text-blue-500 hover:text-blue-400'>{hotel.room.booked}</h2>
+                    <div className='w-fit mx-auto px-3 rounded-lg cursor-pointer hover:text-blue-200' onClick={()=>handleRoom(hotel_id,"booked")}>
+                        <h2 className='text-5xl text-blue-500 hover:text-blue-400'>{hotel.room?.booked}</h2>
                         <h4 className='text-xl'>Booked Rooms</h4>
                     </div>
                 </div>

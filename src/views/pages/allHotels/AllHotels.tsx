@@ -1,87 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import HotelService from '../../../services/hotelPublicService/hotel.services';
 import { hotelImgType } from '../../../type/ownerTypes';
 import Hotel from '../../components/hotel/Hotel';
 import HotelExploreBar from '../../components/hotel/HotelExploreBar';
 
 
 export type hotelType = {
+    _id: string,
     hotel_id: string,
     hotelName: string,
     address: string,
     city: string,
     country: string,
-    img_banner: string,
+    img_uri: {uri:string,title:string,id: string,_id:string}[],
     hotel_category: string
 }
 
-const sampleHotels = [
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-    {   
-        hotel_id: "1",
-        hotelName: "Hortoli Hotel LTD",
-        address: "507, Diya bondor",
-        city: "Dhaka",
-        country: "bangladesh",
-        img_banner: "image banner url",
-        hotel_category: "1 star",
-    },
-]
+
 
 const AllHotels = () => {
-    const [hotels,setHotels] = useState<hotelType[]>(sampleHotels);
+    const [hotels,setHotels] = useState<hotelType[]>([] as hotelType[]);
+
+    useEffect(()=>{
+            HotelService.getAllHotels()
+            .then(data=>{
+                console.log(data)
+                if (data?.success) {
+                    setHotels(data.hotels);
+                }
+            })
+    },[])
+
 
     return (
         <div className='bg-gray-200'>
