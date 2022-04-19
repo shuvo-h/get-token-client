@@ -31,6 +31,7 @@ const OwnerDashboardSideNav = () => {
       >
         <img
           src={arrow}
+         
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
@@ -38,6 +39,7 @@ const OwnerDashboardSideNav = () => {
         <div className="flex gap-x-4 items-center">
           <img
             src={logo}
+           
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
@@ -60,9 +62,8 @@ const OwnerDashboardSideNav = () => {
               } `}
             >
               {/* <img src={`./src/assets/${Menu.src}.png`} /> */}
-              <img src={x} />
+              <img src={x}  />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-               
                 <NavLink to={`${Menu.src}`}>{Menu.title}</NavLink>
               </span>
             </li>
