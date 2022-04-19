@@ -18,6 +18,7 @@ const OwnerDashboardSideNav = () => {
         
       ];
     return (
+
         // <div>
         //     <div className='text-center' >
         //         <NavLink to="one">child 1</NavLink> |||| <NavLink to="two">child 2</NavLink>
@@ -51,6 +52,7 @@ const OwnerDashboardSideNav = () => {
           >
             Designer
           </h1>
+
         </div>
         <ul className="pt-6">
           {Menus.map((Menu, index) => (
@@ -70,9 +72,9 @@ const OwnerDashboardSideNav = () => {
           ))}
         </ul>
       </div>
-      <div className="h-screen flex-1 p-7">
+      {/* <div className="h-screen flex-1 p-7">
         <h1 className="text-2xl font-semibold ">Home Page</h1>
-      </div>
+      </div> */}
     </div>
     );
 };

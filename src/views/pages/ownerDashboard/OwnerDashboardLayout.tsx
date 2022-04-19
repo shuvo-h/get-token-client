@@ -4,12 +4,14 @@ import OwnerDashboardSideNav from '../../components/ownerComponents/OwnerDashboa
 
 const OwnerDashboardLayout = () => {
     return (
-        <div>
+        <div style={{display:"flex"}}>
             <div>
-                <OwnerDashboardSideNav></OwnerDashboardSideNav>
-            </div>
-            <div>
-                <Outlet></Outlet>
+                <div>
+                    <OwnerDashboardSideNav></OwnerDashboardSideNav>
+                </div>
+                <div>
+                    <Outlet></Outlet>
+                </div>
             </div>
             <div>
                 <DashboardMain></DashboardMain>
