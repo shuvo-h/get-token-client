@@ -1,8 +1,8 @@
-import { newHotelInfoType } from './../../type/ownerTypes';
 import httpReq from "../http.services";
+import { addNewHotelType } from '../../type/hotelType';
 
 class OwnerHotelAllService {
-    async addNewHotel(payload:newHotelInfoType){
+    async addNewHotel(payload:addNewHotelType){
         const {data} = await httpReq.post("/hotels/hotel",payload)
         return data
     }

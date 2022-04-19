@@ -12,7 +12,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex justify-between items-center font-semibold text-lg">
                     <li className="list-none mx-2 cursor-pointer">
-                        Place to Visit
+                        <NavLink to={"/hotels"}>Place to Stay</NavLink>
                     </li>
                     <li className="list-none mx-2 cursor-pointer">
                         Feedback

@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.css';
 // import { FaChevronRight } from 'react-icons/fa';
 import { BiChevronRight } from 'react-icons/bi';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -23,11 +24,11 @@ const Footer = () => {
                    <div className='mb-5'>
                      <h4 className='pb-4'>Useful Links</h4> 
                      <ul className='text-gray-500 '>
-                         <li  className='pb-4  '> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">  Home</a></li>
-                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">About us</a> </li>
-                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Services</a> </li>
-                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Terms of services</a> </li>
-                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Privacy policy</a> </li>
+                         <li className='pb-4'> <NavLink to={"/home"}>Home</NavLink></li>
+                         <li className='pb-4'> <NavLink to={"/about-us"}>About US</NavLink></li>
+                         <li className='pb-4'> <NavLink to={"/contact-us"}>Contact US</NavLink></li>
+                         <li className='pb-4'> <NavLink to={"/term-and-service"}>Terms of services</NavLink></li>
+                         <li className='pb-4'> <NavLink to={"/privacy-policy"}>Privacy policy</NavLink></li>
                      </ul>
                    </div>
                    <div className='mb-5'>
@@ -35,7 +36,7 @@ const Footer = () => {
                      <ul className='text-gray-500'>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Enterprise</a></li>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Business</a> </li>
-                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Pricing</a> </li>
+                         <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Services</a> </li>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Development</a> </li>
                          <li className='pb-4'> <i className="fa fa-chevron-right text-yellow-500"></i> <a href="/#" className="hover:text-yellow-500">Ticket booking</a> </li>
                      </ul>
