@@ -16,4 +16,10 @@ export const ownerDashboardRoutes = [
         Component: Two, 
         roles:["*"]  // everyone can access
     },
+    {
+        path: "email",
+        name: "Two",
+        Component: Two, 
+        roles:["*"]  // everyone can access
+    },
 ]
