@@ -38,7 +38,7 @@ const One = () => {
               </ul> 
 
          </div>
-         <div className='p-7 text-2xl font-semibold flex-1 h-screen' >
+         {/* <div className='p-7 text-2xl font-semibold flex-1 h-screen' >
              <h1>Home Page</h1>
 
              <div className="">
@@ -97,7 +97,7 @@ const One = () => {
             </div>
 
          </div>
-         </div>
+         </div> */}
      </div>
     );
 };
