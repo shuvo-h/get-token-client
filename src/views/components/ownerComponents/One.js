@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // import Pichart2 from './Pichart2';
 // import Piechart from './Piechart';
 import Piechart from './Piechart';
+import Controle from '../../../assets/images/control.png';
+import logo from '../../../assets/images/logo.png';
+import x from '../../../assets/images/Setting.png';
 
 
 
@@ -9,7 +12,7 @@ import Piechart from './Piechart';
 const One = () => {
     const [open, setOpen] = useState(true);
     const Menus = [
-      { title: "Dashboard", src: "Chart_fill" },
+      
       { title: "Inbox", src: "Chat" },
       { title: "Email", src: "User", },
       { title: "Tokens ", src: "Setting" },
@@ -21,11 +24,12 @@ const One = () => {
     <div className="flex">
     <div
       className={` ${
-        open ? "w-72" : "w-20 "
+        open ? "w-full" : "w-20 "
       } bg-dark-purple h-screen p-5  pt-8 relative duration-300`}
     >
       <img
-        src="../../../assets/images/control.png "
+        // src="../../../assets/images/control.png "
+        src={Controle}
         alt=''
         className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
          border-2 rounded-full  ${!open && "rotate-180"}`}
@@ -33,7 +37,8 @@ const One = () => {
       />
       <div className="flex gap-x-4 items-center">
         <img
-          src="../../../assets/images/logo.png"
+          // src="../../../assets/images/logo.png"
+          src={logo}
           alt=''
           className={`cursor-pointer duration-500 ${
             open && "rotate-[360deg]"
@@ -56,7 +61,9 @@ const One = () => {
               index === 0 && "bg-light-white"
             } `}
           >
-            <img src={`../../../assets/images/${Menu.src}.png`} alt="" />
+            {/* <img src={`../../../assets/images/${Menu.src}.png`} alt="" /> */}
+            <img src={x} alt="" />
+           
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               {Menu.title}
             </span>
