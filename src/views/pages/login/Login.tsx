@@ -10,14 +10,18 @@ const fakeUser = {
     email: "amir@gmail.com",
     password:"Aa@12345678"
 }
-const fakeUser2 = {
-    email: "amir@gmail.com",
-    password:"Aa@12345678"
-}
 
 const Login = () => {
     const dispatch = useDispatch();
-    const [loginInfo,setLoginInfo] = useState<logInfoType>(fakeUser as logInfoType);
+    const [loginInfo,setLoginInfo] = useState<logInfoType>({} as logInfoType);
+
+    const handleLoginOnchange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        if (e.target.name === "email" || e.target.name === "password") {
+            const _loginInfo = {...loginInfo};
+            _loginInfo[e.target.name] = e.target.value;
+            setLoginInfo(_loginInfo);
+        }
+    }
     
     const handleLogin =  async(e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
@@ -25,8 +29,6 @@ const Login = () => {
         try {
             const user =  await AuthService.login(loginInfo)
             if (user.email) {
-                console.log(user);
-                
                 dispatch(setUserInfo({user,status: 'success',error:null}))
             }else{
                 dispatch(setUserInfo({user:null,status: 'error',error:"Unknown error occured"}))
@@ -65,11 +67,11 @@ const Login = () => {
                     <form className='flex flex-col' onSubmit={e=>handleLogin(e)}>
                        <div className='mb-6 pt-3 rounded bg-gray-200'>
                            <label className='block text-gray-700 text-sm font-bold mb-2 ml-3' htmlFor="email">Email</label>
-                           <input className='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3' type="email" name='email' id="email" />
+                           <input className='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3' onChange={e=>handleLoginOnchange(e)} type="email" name='email' id="email" />
                        </div>
                        <div className='mb-6 pt-3 rounded bg-gray-200'>
                            <label className='block text-gray-700 text-sm font-bold mb-2 ml-3' htmlFor="password">Password</label>
-                           <input className='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'   type="password" name='password' id="password" />
+                           <input className='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3' onChange={e=>handleLoginOnchange(e)}  type="password" name='password' id="password" />
                        </div>
                        <div className='text-center pb-4'>
                            <a href="/#" className='text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6'>Forgot Your Password?</a>

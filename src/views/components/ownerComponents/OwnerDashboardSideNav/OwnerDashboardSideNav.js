@@ -18,6 +18,7 @@ const OwnerDashboardSideNav = () => {
         
       ];
     return (
+
         // <div>
         //     <div className='text-center' >
         //         <NavLink to="one">child 1</NavLink> |||| <NavLink to="two">child 2</NavLink>
@@ -49,6 +50,7 @@ const OwnerDashboardSideNav = () => {
           >
             Designer
           </h1>
+
         </div>
         <ul className="pt-6">
           {Menus.map((Menu, index) => (

@@ -1,13 +1,12 @@
 import React from "react"
 
-
-
 const One  = React.lazy(()=>import("../views/components/ownerComponents/One"))
 const Two  = React.lazy(()=>import("../views/components/ownerComponents/Two"))
 const Email  = React.lazy(()=>import("../views/components/ownerComponents/Email"))
 const Invoices  = React.lazy(()=>import("../views/components/ownerComponents/Invoices"))
 const Media  = React.lazy(()=>import("../views/components/ownerComponents/Media"))
 const Total  = React.lazy(()=>import("../views/components/ownerComponents/Total"))
+
 
 export const ownerDashboardRoutes = [
     {
@@ -44,6 +43,7 @@ export const ownerDashboardRoutes = [
         path: "total",
         name: "total",
         Component:Total, 
+
         roles:["*"]  // everyone can access
     },
 ]
