@@ -75,7 +75,7 @@ const One = () => {
             <div className='flex-auto '>
                 <div className=' flex flex-col bg-white'>
                     <div className='  flex-row'>
-                        <h1 className='text-center font-bold text-gray-500 py-6 '>Welcome to Owner Dashboard</h1>
+                        <h1 className='text-center font-bold text-gray-500 py-6 '>Welcome to Owner Dashboard aginn</h1>
                     </div>
                 </div>
             </div>
