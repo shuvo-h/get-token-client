@@ -2,7 +2,7 @@ import React from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 const BookingForm = () => {
     return (
-        <div className='py-5 px-8 shadow-xl shadow-red-400 rounded-xl bg-white text-black'>
+        <div className='my-10 px-8 shadow-xl  rounded-xl bg-white text-black'>
             <form action="" className='py-8'>
                 <div className="flex justify-items-start items-center mb-8 font-medium text-lg ">
                     <div>

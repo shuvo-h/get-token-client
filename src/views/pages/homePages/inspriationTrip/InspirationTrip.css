@@ -1,9 +1,9 @@
-.inspration_trip_container{
+.inspration_trip_container {
     padding: 0 100px;
     /* height: 150vh; */
 }
 
-.inspration_trip_banner{
+.inspration_trip_banner {
     background: url(../../../images/inspiration_cover.webp);
     width: 100%;
     text-align: center;
@@ -12,79 +12,94 @@
     margin-top: -290px;
     border-radius: 20px;
 }
-.inspration_trip_banner_text{
+
+.inspration_trip_banner_text {
     display: flex;
     color: #fff;
     justify-content: center;
     align-items: flex-end;
     height: 90vh;
 }
-.inspration_trip_banner_text h2{
+
+.inspration_trip_banner_text h2 {
     font-size: 2.4em;
     font-weight: 700;
 }
-.inspration_trip_banner_text button{
+
+.inspration_trip_banner_text button {
+
     margin-top: 10px;
-    font-size: 1.5em;
-    font-weight: 500;
-    border: 2px solid white;
-    padding: 5px 20px;
-    border-radius: 20px;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 11px 31px;
+    color: #6F019C;
+    background-color: #fff;
+    border-radius: 28px;
+
+
 }
+
 /* ------------------------------------------------ */
-.inspration_trip_content h2{
+.inspration_trip_content h2 {
     margin-top: 50px;
     margin-bottom: 30px;
     font-size: 2.2em;
     font-weight: 700;
 }
-.inspration_trip_card img{
-    border-radius: 10px 10px 0 0 ;
+
+.inspration_trip_card img {
+    border-radius: 10px 10px 0 0;
 }
-.inspration_trip_card_title{
+
+.inspration_trip_card_title {
     padding: 40px 20px;
     color: white;
     border-radius: 0 0 10px 10px;
 
 }
 
-.inspration_trip_card_title h4{
+.inspration_trip_card_title h4 {
     font-size: 1.5em;
     font-weight: 700;
-     
+
 }
 
 /*----------------- Media Queary ------------------*/
 
 @media only screen and (max-width: 768px) {
-    
+
     /* ---------------------------------- */
-    .inspration_trip_container{
+    .inspration_trip_container {
         padding: 0 30px;
         /* height: 50%; */
     }
-    
-    .inspration_trip_content h2{
+
+    .inspration_trip_content h2 {
         font-size: 2em;
     }
-    .inspration_trip_banner{
-        margin-top: -160px;
-    } 
 
-    .inspration_trip_banner_text{
+    .inspration_trip_banner {
+        margin-top: -160px;
+    }
+
+    .inspration_trip_banner_text {
         height: 45vh;
-      }
-      /* ---------------------- */
-      .inspration_trip_banner_text h2{
+    }
+
+    /* ---------------------- */
+    .inspration_trip_banner_text h2 {
         padding: 10px;
         font-size: 1.8em;
         font-weight: 500;
         line-height: 30px;
     }
-    .inspration_trip_banner_text button{
+
+    .inspration_trip_banner_text button {
         margin-top: 10px;
         font-size: 1.4em;
-        border: 2px solid white;
+        background-color: #fff;
+        color: #6F019C;
+
         padding: 5px 20px;
         border-radius: 20px;
     }
