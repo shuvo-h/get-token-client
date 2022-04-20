@@ -1,16 +1,15 @@
 import React, { Suspense } from 'react';
 import {  Route, Routes } from 'react-router-dom';
-import { adminRoutes } from '../../../../routes/adminDashboardRoutes';
+import { adminDashboardRoutes } from '../../../../routes/adminDashboardRoutes';
 
 const AdminDashboardMain = () => {
     return (
         <Suspense fallback={<>Loading...</>}>
             <Routes>
                 {
-                    adminRoutes.map((route,index)=>{
-                        console.log(route.Componenet);
+                    adminDashboardRoutes.map((route,index)=>{
                         return (
-                            route.Componenet && <Route path={route.path} element={<route.Componenet/>} key={index} />
+                            route.Componenet && <Route path={route.path} element={<route.Componenet/>} key={index} ></Route>
                         )
                     })
                 }

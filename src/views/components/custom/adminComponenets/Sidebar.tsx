@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "https://i.ibb.co/dQYCnxc/Chart-fill.png", to:"" },
-    { title: "Mail", src: "https://i.ibb.co/jHTpQkr/Chart.png", to:'/dashboard/admin/mail' },
-    { title: "Experiences", src: "https://i.ibb.co/jHTpQkr/Chart.png", to:'/dashboard/admin/experience' },
-    { title: "Home", src: "https://i.ibb.co/P6JVd5k/User.png", gap: true, to:'/' },
+    { title: "Dashboard", src: "https://i.ibb.co/dQYCnxc/Chart-fill.png", to:"home" },
+    { title: "Mail", src: "https://i.ibb.co/jHTpQkr/Chart.png", to:'mail' },
+    { title: "Experiences", src: "https://i.ibb.co/jHTpQkr/Chart.png", to:'experience' },
+    { title: "Home", src: "https://i.ibb.co/P6JVd5k/User.png", gap: true, to:'' },
   ];
     return (
         <div>

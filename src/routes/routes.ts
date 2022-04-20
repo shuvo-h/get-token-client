@@ -1,11 +1,12 @@
 import React from "react"
 import About from "../views/pages/about"
+import AdminDashboard from "../views/pages/adminDashboard/AdminDashboardLayout"
 import TestHotelInfoUpload from "../views/pages/login/TestHotelInfoAdd"
 
 const Home = React.lazy(() => import("../views/pages/homePages/home/Home"))
 const Login = React.lazy(() => import("../views/pages/login/Login"))
 const Registration = React.lazy(() => import("../views/pages/registration/Registration"))
-const AdminDashboard = React.lazy(() => import("../views/pages/adminDashboard/AdminDashboardLayout"))
+// const AdminDashboardLayout = React.lazy(() => import("../views/pages/adminDashboard/AdminDashboardLayout"))
 const OwnerDashboardLayout = React.lazy(() => import("../views/pages/ownerDashboard/OwnerDashboardLayout"))
 const AllHotels = React.lazy(() => import("../views/pages/allHotels/AllHotels"))
 const SIngleHotel = React.lazy(() => import("../views/pages/allHotels/SIngleHotel"))
@@ -74,15 +75,15 @@ export const allRoutes = [
         roles: ["*"]  // everyone can access
     },
     {
+        path: "/dashboard/admin/*",
+        name: "Admin Dashboard",
+        Component: AdminDashboard,
+        roles: ["*"] // everyone can access
+    },
+    {
         path: "/dashboard/owner/*",
         name: "Owner Dashboard",
         Component: OwnerDashboardLayout,
         roles: ["*"]  // everyone can access
     },
-    {
-        path: "/dashboard/admin/*",
-        name: "Admin Dashboard",
-        Component: AdminDashboard,
-        roles: ["*"] // everyone can access
-    }
 ]

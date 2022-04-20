@@ -12,7 +12,7 @@ const DashboardHome = () => {
     console.log(data);
     return (
         <div className='ml-10'>
-            <p>Hello</p>
+            <p>Hello ADmin Home</p>
             <div className="flex">
                 <div className="p-4"></div>
             </div>

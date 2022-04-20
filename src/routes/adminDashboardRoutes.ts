@@ -1,20 +1,21 @@
 import React from 'react'
+// import DashboardHome from '../views/pages/adminDashboard/DashboardHome/DashboardHome'
+// import DashboardMail from '../views/pages/adminDashboard/DashboardMail/DashboardMail'
 
-const Home = React.lazy(() => import('../views/pages/adminDashboard/DashboardHome/DashboardHome'))
-const Mail = React.lazy(() => import('../views/pages/adminDashboard/DashboardMail/DashboardMail'))
-const About = React.lazy(() => import('../views/pages/adminDashboard/DashboardHome/DashboardHome'))
+const DashboardHome  = React.lazy(()=>import("../views/pages/adminDashboard/DashboardHome/DashboardHome"))
+const DashboardMail  = React.lazy(()=>import("../views/pages/adminDashboard/DashboardMail/DashboardMail"))
 
-export const adminRoutes = [
+export const adminDashboardRoutes = [
     {
-        path: '/',
-        title: 'Home',
-        Componenet: Home,
+        path: 'mail',
+        title: 'Mail',
+        Componenet: DashboardMail,
         roles: ['*'] // Anyone can access
     },
     {
-        path: '/mail',
-        title: 'Mail',
-        Component: About,
+        path: 'home',
+        title: 'DashboardHome',
+        Componenet: DashboardHome,
         roles: ['*'] // Anyone can access
-    }
+    },
 ]
