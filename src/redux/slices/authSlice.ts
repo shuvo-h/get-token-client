@@ -11,8 +11,6 @@ export type userStateType = {
 
 export const fetchUser = createAsyncThunk("user/user", ()=>{
     const response =  AuthService.keepLoggedIn()
-    console.log(response);
-    
     return response;
 })
 const userState: userStateType = {

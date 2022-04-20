@@ -10,9 +10,9 @@ type hotelFormType = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTM
 
 
 
-const TestHotelInfoUpload = () => {
+const AddNewHotel = () => {
     // load and get user information 
-    useAuthAccess()
+    // useAuthAccess()
     const user = useSelector((state:RootState)=>state.user);
 
     const [newHotelInfo,setNewHotelInfo] = useState<addNewHotelType>({} as addNewHotelType);
@@ -85,7 +85,6 @@ console.log(newHotelInfo);
         if (user.user?.email) {
             newHotelInfo.owner_email = user.user.email;
             newHotelInfo.img_uri = images;
-            
             try {
                 OwnerService.addNewHotel(newHotelInfo)
                 .then(data=>{
@@ -201,4 +200,4 @@ console.log(newHotelInfo);
     );
 };
 
-export default TestHotelInfoUpload;
+export default AddNewHotel;

@@ -46,17 +46,7 @@ const Login = () => {
         }
     }
 
-    const handleLogout = async() =>{
-        try {
-            const result =  await AuthService.logoutUser();
-            if (result.user == null) {
-                dispatch(setUserInfo({user: result.user,status: 'success',error:null}))
-            }
-        } catch (err) {
-            console.log(err);
-            dispatch(setUserInfo({user:null,status: 'error',error:"Something went wrong!"}))
-        }
-    }
+    
 
     return (
         <div className=" login-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" >

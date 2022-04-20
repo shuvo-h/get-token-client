@@ -1,7 +1,6 @@
 import React from "react"
 import About from "../views/pages/about"
 import AdminDashboard from "../views/pages/adminDashboard/AdminDashboardLayout"
-import TestHotelInfoUpload from "../views/pages/login/TestHotelInfoAdd"
 
 const Home = React.lazy(() => import("../views/pages/homePages/home/Home"))
 const Login = React.lazy(() => import("../views/pages/login/Login"))
@@ -66,12 +65,6 @@ export const allRoutes = [
         path: `contact-us`,
         name: "Contact Us",
         Component: ContactUS,
-        roles: ["*"]  // everyone can access
-    },
-    {
-        path: "/testhotelupload",
-        name: "test API",
-        Component: TestHotelInfoUpload,
         roles: ["*"]  // everyone can access
     },
     {
