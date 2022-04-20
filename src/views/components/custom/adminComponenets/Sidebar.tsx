@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "https://i.ibb.co/dQYCnxc/Chart-fill.png" },
-    { title: "Mail", src: "https://i.ibb.co/jHTpQkr/Chart.png" },
-    { title: "All hotels", src: "https://i.ibb.co/P6JVd5k/User.png", gap: true },
+    { title: "Dashboard", src: "https://i.ibb.co/dQYCnxc/Chart-fill.png", to:"" },
+    { title: "Mail", src: "https://i.ibb.co/jHTpQkr/Chart.png", to:'/dashboard/admin/mail' },
+    { title: "Experiences", src: "https://i.ibb.co/jHTpQkr/Chart.png", to:'/dashboard/admin/experience' },
+    { title: "Home", src: "https://i.ibb.co/P6JVd5k/User.png", gap: true, to:'/' },
   ];
     return (
         <div>
@@ -37,7 +39,8 @@ const Sidebar = () => {
         </div>
         <ul className="pt-6">
           {Menus.map((Menu, index) => (
-            <li
+            <NavLink
+              to={Menu.to}
               key={index}
               className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${
@@ -48,12 +51,9 @@ const Sidebar = () => {
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </span>
-            </li>
+            </NavLink>
           ))}
         </ul>
-      </div>
-      <div className="h-screen flex-1 p-7">
-        <h1 className="text-2xl font-semibold ">Home Page</h1>
       </div>
         </div>
     );
