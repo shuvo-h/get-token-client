@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import commonService from '../../../services/commonService/common.service';
+import Footer from '../common/footer/Footer';
 
 export type contactFormType = {
     name: string
@@ -55,6 +56,7 @@ const ContactUS = () => {
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

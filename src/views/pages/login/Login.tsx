@@ -1,6 +1,7 @@
 import { type } from 'os';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { setUserInfo } from '../../../redux/slices/authSlice';
 import AuthService from '../../../services/Auth.service';
 import { logInfoType } from '../../../type/allTypes';
@@ -13,6 +14,7 @@ const fakeUser = {
 
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [loginInfo,setLoginInfo] = useState<logInfoType>({} as logInfoType);
 
     const handleLoginOnchange = (e: React.ChangeEvent<HTMLInputElement>) =>{
@@ -29,7 +31,13 @@ const Login = () => {
         try {
             const user =  await AuthService.login(loginInfo)
             if (user.email) {
+                
                 dispatch(setUserInfo({user,status: 'success',error:null}))
+                if (user.role === "owner") {
+                    navigate("/dashboard/owner/")
+                }else if(user.role === "admin"){
+                    navigate("/dashboard/admin/")
+                }
             }else{
                 dispatch(setUserInfo({user:null,status: 'error',error:"Unknown error occured"}))
             }
@@ -74,20 +82,18 @@ const Login = () => {
                            <input className='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3' onChange={e=>handleLoginOnchange(e)}  type="password" name='password' id="password" />
                        </div>
                        <div className='text-center pb-4'>
-                           <a href="/#" className='text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6'>Forgot Your Password?</a>
+                           {/* <a href="/#" className='text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6'>Forgot Your Password?</a> */}
                        </div>
                        <button className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200' type='submit' >Sign In</button>
                     </form>
                 </div>
             </main>
             <div className='max-w-lg mx-auto text-center mt-12 mb-6'>
-                <p className='text-white'>Don't have an account? <a href='/#' className='font-bold hover:underline' >Sign Up</a> </p>
+                <p className='text-white'>Don't have an account? <NavLink to='/registration' className='font-bold hover:underline' >Sign Up</NavLink> </p>
             </div>
 
             <footer className='max-w-lg mx-auto flex justify-center text-white'>
-               <a href='/#' className='hover:underline'>Contact</a>
-               <span className='mx-3'>•</span>
-               <a href='/#' className='hover:underline'>Privacy</a>
+               <NavLink to='/contact-us' className='hover:underline'>Contact</NavLink>
             </footer>
              
         </div>
