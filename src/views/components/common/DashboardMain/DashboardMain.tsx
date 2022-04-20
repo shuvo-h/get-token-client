@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ownerDashboardRoutes } from '../../../../routes/ownerDashboardRoutes';
+import OwnerGuard from '../../AuthGuard/OwnerGuard';
 
 const DashboardMain = () => {
     return (
@@ -9,7 +10,7 @@ const DashboardMain = () => {
                 {
                     ownerDashboardRoutes.map((route,id)=>{
                         return(
-                            route.Component && <Route path={route.path} element={<route.Component />} key={id}></Route>
+                            route.Component && <Route path={route.path} element={<OwnerGuard><route.Component /></OwnerGuard>} key={id}></Route>
                         )
                     })
                 }

@@ -3,7 +3,7 @@ import AuthService from '../../services/Auth.service';
 import { userType } from '../../type/allTypes';
 
 type  statusType = "idle" | "pending" | "success" | "error";
-type userStateType = {
+export type userStateType = {
     status: string
     user: userType | null
     error: string |null 
@@ -11,6 +11,8 @@ type userStateType = {
 
 export const fetchUser = createAsyncThunk("user/user", ()=>{
     const response =  AuthService.keepLoggedIn()
+    console.log(response);
+    
     return response;
 })
 const userState: userStateType = {
@@ -36,12 +38,14 @@ const authSlice = createSlice({
             state.error = null;
         })
         builder.addCase(fetchUser.fulfilled, (state,action)=>{
+            console.log(action.payload);
+            
             state.status = "success";
             state.user = action.payload;
             state.error = null;
         })
         builder.addCase(fetchUser.rejected, (state,action)=>{
-            state.status = "idle";
+            state.status = "success";
             state.user = null;
             state.error = "Some thing went wrong. Login Again!";
         })
