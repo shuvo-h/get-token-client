@@ -1,29 +1,42 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import arrow from '../../../../assets/images/arrow.jpg';
 import logo from '../../../../assets/images/logo.png';
 import x from '../../../../assets/images/Setting.png';
+import { setUserInfo } from '../../../../redux/slices/authSlice';
+import AuthService from '../../../../services/Auth.service';
 
 import Piechart from '../Piechart';
 
 const OwnerDashboardSideNav = () => {
     const [open, setOpen] = useState(true);
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
     const Menus = [
         { title: "Dashboard", src: "Chart_fill" },
         { title: "Email", src: "email" },
         { title: "Invoices", src: "invoices", },
         { title: "Media ", src: "media" },
         { title: "Hotels", src: "hotels" },
-    
-        
+        { title: "Add Hotel", src: "addHotel" },
       ];
-    return (
 
-        // <div>
-        //     <div className='text-center' >
-        //         <NavLink to="one">child 1</NavLink> |||| <NavLink to="two">child 2</NavLink>
-        //     </div>
-        // </div>
+      // logout the user 
+      const handleLogout = async() =>{
+        try {
+            const result =  await AuthService.logoutUser();
+            if (result.user == null) {
+                dispatch(setUserInfo({user: result.user,status: 'success',error:null}))
+                navigate("/login")
+            }
+        } catch (err) {
+            console.log(err);
+            dispatch(setUserInfo({user:null,status: 'error',error:"Something went wrong!"}))
+        }
+    }
+
+    return (
         <div className="flex">
       <div
         className={` ${
@@ -69,6 +82,7 @@ const OwnerDashboardSideNav = () => {
               </span>
             </li>
           ))}
+          <li><button className='bg-sky-400' onClick={handleLogout}>Logout</button></li>
         </ul>
       </div>
       {/* <div className="h-screen flex-1 p-7">

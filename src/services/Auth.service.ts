@@ -19,7 +19,7 @@ class MainAuthService {
     }
 
     async logoutUser():Promise<any>{
-      const ResponseData = await httpReq.delete("/logout");
+      const ResponseData = await httpReq.delete("/authenticate/logout");
       return ResponseData;
     }
 
