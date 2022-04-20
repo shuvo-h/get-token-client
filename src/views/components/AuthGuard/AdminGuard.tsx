@@ -12,7 +12,7 @@ type OwnerGuardPropType = {
 const AdminGuard = ({children,...rest}:OwnerGuardPropType )=> {
     const user = useSelector((state:RootState)=>state.user);
     const location = useLocation();
-    useAuthAccess()
+    // useAuthAccess()
 
     if (user.status === "pending") {
         return (
