@@ -12,9 +12,12 @@ type getSingleHotelType = {
     hotel: singleHotelType
     success: boolean
 }
-type getOwnerAllHotelType = {
+type getOwnerAllHotelPayloadType = {
     owner_email : string
 }
+type getOwnerAllHotelType = {hotels: addNewHotelType[], success: boolean}
+
+
 
 class AllHotelServices{
     async getAllHotels(): Promise<getAllHotelType> {
@@ -25,7 +28,7 @@ class AllHotelServices{
         const {data} = await httpReq.get(`/hotels/${hotel_id}`);
         return data;
     }
-    async getOwnerAllHotel(payload:getOwnerAllHotelType): Promise<addNewHotelType[]> {
+    async getOwnerAllHotel(payload:getOwnerAllHotelPayloadType): Promise<getOwnerAllHotelType> {
         const {data} = await httpReq.post(`hotels/hotel/owner`,payload);
         return data;
     }
