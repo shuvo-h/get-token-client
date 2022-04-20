@@ -41,10 +41,10 @@ const InspirationTrip = () => {
         <div className='px-7 inspration_trip_container'>
             <div className='inspration_trip_banner '>
                 <div className='inspration_trip_banner_text'>
-                    <div className='pb-7'>
-                        <h2 className='fs-xl'>Let Your curiosity do the booking</h2>
+                    <div className='pb-20'>
+                        <h2 className='fs-xl mb-5'>Let Your curiosity do the booking</h2>
                         <div>
-                            <button className='mt-10 bg-red-500 border border-transparent text-wgite hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400'
+                            <button className='mt-10'
                             >I'm flexible</button>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ const InspirationTrip = () => {
             </div>
 
 
-            <div className='inspration_trip_content'>
+            <div className='inspration_trip_content mb-20'>
                 <h2>Inspiration for your next trip</h2>
                 <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-5'>
                     {
