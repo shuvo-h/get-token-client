@@ -16,9 +16,13 @@ const OwnHotels = () => {
             })
         }
     },[user.user?.email])
+
     return (
         <div>
             OwnHotels
+            {
+                ownerHotels.map(hot=><li>{hot.hotelName}</li>)
+            }
         </div>
     );
 };
