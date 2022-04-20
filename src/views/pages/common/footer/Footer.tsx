@@ -24,7 +24,7 @@ const Footer = () => {
                             <h4 className='pb-4'>Useful Links</h4>
                             <ul className='text-gray-500 '>
                                 <li className='pb-4'> <NavLink to={"/home"}>Home</NavLink></li>
-                                <li className='pb-4'> <NavLink to={"/about-us"}>About US</NavLink></li>
+                                <li className='pb-4'> <NavLink to={"/about"}>About US</NavLink></li>
                                 <li className='pb-4'> <NavLink to={"/contact-us"}>Contact US</NavLink></li>
                                 <li className='pb-4'> <NavLink to={"/term-and-service"}>Terms of services</NavLink></li>
                                 <li className='pb-4'> <NavLink to={"/privacy-policy"}>Privacy policy</NavLink></li>
