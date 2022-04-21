@@ -1,11 +1,12 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import AdminDashboardMain from '../../components/common/AdminDashboardMain/AdminDashboardMain';
 
-import Sidebar from '../../components/custom/adminComponenets/Sidebar';
+import Sidebar from '../../components/custom/adminComponenets/Sidebar/Sidebar';
 
 const AdminDashboardLayout = () => {
     return (
+        <>
         <div style={{display:"flex"}}>
             <div style={{display:"flex"}}>
                 <div>
@@ -19,6 +20,7 @@ const AdminDashboardLayout = () => {
                 <AdminDashboardMain/>
             </div>
         </div>
+        </>
     );
 };
 
