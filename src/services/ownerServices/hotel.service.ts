@@ -1,5 +1,5 @@
 import httpReq from "../http.services";
-import { addNewHotelType } from '../../type/hotelType';
+import { addNewHotelType, updateSingleHoltelType } from '../../type/hotelType';
 
 class OwnerHotelAllService {
     async addNewHotel(payload:addNewHotelType){
@@ -7,6 +7,10 @@ class OwnerHotelAllService {
         return data
     }
 
+    async updateOwnerSingleHotel(hotel_id:string,payload:addNewHotelType): Promise<updateSingleHoltelType> {
+        const {data} = await httpReq.update(`hotels/hotel/${hotel_id}`,payload);
+        return data;
+    }
 }
 
 const OwnerService = new OwnerHotelAllService();

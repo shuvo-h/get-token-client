@@ -19,3 +19,15 @@ export type addNewHotelType = {
     contact_phone: string,
     contact_Extra_info: string
 }
+
+export type updateSingleHoltelType = {
+    result: {
+        acknowledged: boolean,
+        modifiedCount: number,
+        upsertedId: boolean,
+        upsertedCount: number,
+        matchedCount: number
+    },
+    success: boolean
+}
+

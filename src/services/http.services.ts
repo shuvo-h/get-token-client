@@ -25,7 +25,7 @@ class Request {
         return instance.post(url,body).then(res=>res)
     }
     async update(url:string,body:any):Promise<AxiosResponse>{
-        return instance.patch(url).then(res=>res)
+        return instance.patch(url,body).then(res=>res)
     }
     async delete(url:string):Promise<AxiosResponse>{
         return instance.delete(url).then(res=>res)

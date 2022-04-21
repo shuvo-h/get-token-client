@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
-import { addNewHotelType } from "../../type/hotelType";
+import { addNewHotelType, updateSingleHoltelType } from "../../type/hotelType";
+import { getOwnerHotelType, singleHotelDeleteType } from "../../type/ownerTypes";
 import { hotelType } from "../../views/pages/allHotels/AllHotels";
 import { singleHotelType } from "../../views/pages/allHotels/SIngleHotel";
 import httpReq from "../http.services";
@@ -15,7 +16,7 @@ type getSingleHotelType = {
 type getOwnerAllHotelPayloadType = {
     owner_email : string
 }
-type getOwnerAllHotelType = {hotels: addNewHotelType[], success: boolean}
+type getOwnerAllHotelType = {hotels: getOwnerHotelType[], success: boolean}
 
 
 
@@ -32,6 +33,11 @@ class AllHotelServices{
         const {data} = await httpReq.post(`hotels/hotel/owner`,payload);
         return data;
     }
+    async deleteOwnerSingleHotel(hotel_id:string): Promise<singleHotelDeleteType> {
+        const {data} = await httpReq.delete(`hotels/hotel/${hotel_id}`);
+        return data;
+    }
+    
 }
 
 const HotelService = new AllHotelServices();

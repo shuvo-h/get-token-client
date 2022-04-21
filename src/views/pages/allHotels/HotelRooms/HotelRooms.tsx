@@ -2,19 +2,23 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HotelBookingModal from '../../../components/hotel/HotelBookingModal';
 
-type roomType = {
+export type roomType = {
     hotel_id: string
     room_no: string
     hotelName: string
     status: string
     rent: number
     room_imgs: {uri:string,title:string,id: string}[]
-    romm_floor: number
+    room_floor: number
     bed: number
     tv: string
     internate: string
     other_facilities: string[]
     room_service: string
+    _id: string
+    createdAt: string,
+    updatedAt: string,
+    __v: number
 }
 const  sample_rooms = [
     {
@@ -24,12 +28,16 @@ const  sample_rooms = [
         status: "booked",
         rent: 500,
         room_imgs: [{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"}],
-        romm_floor: 5,
+        room_floor: 5,
         bed: 2,
         tv: "Yes",
         internate: "No",
         other_facilities: ["Own Electric support","Doctor facility upon call with extra fees","Resturant on ground floor","Car parking facility"],
-        room_service: "Once per day"
+        room_service: "Once per day",
+        _id: "string",
+        createdAt: "string",
+        updatedAt: "string",
+        __v: 0
     },
     {
         hotel_id: "df54fdg2d547ght",
@@ -38,12 +46,16 @@ const  sample_rooms = [
         status: "booked",
         rent: 500,
         room_imgs: [{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"}],
-        romm_floor: 5,
+        room_floor: 5,
         bed: 2,
         tv: "Yes",
         internate: "No",
         other_facilities: ["Own Electric support","Doctor facility upon call with extra fees","Resturant on ground floor","Car parking facility"],
-        room_service: "Once per day"
+        room_service: "Once per day",
+        _id: "string",
+        createdAt: "string",
+        updatedAt: "string",
+        __v: 0
     },
     {
         hotel_id: "dfg5469tfggf2g1f645g",
@@ -52,12 +64,16 @@ const  sample_rooms = [
         status: "booked",
         rent: 500,
         room_imgs: [{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"}],
-        romm_floor: 5,
+        room_floor: 5,
         bed: 2,
         tv: "Yes",
         internate: "No",
         other_facilities: ["Own Electric support","Doctor facility upon call with extra fees","Resturant on ground floor","Car parking facility"],
-        room_service: "Once per day"
+        room_service: "Once per day",
+        _id: "string",
+        createdAt: "string",
+        updatedAt: "string",
+        __v: 0
     },
     {
         hotel_id: "fg45fgr5g2458",
@@ -66,12 +82,16 @@ const  sample_rooms = [
         status: "booked",
         rent: 500,
         room_imgs: [{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"},{uri:"img uri",title:"room inside view",id: "fdg4f4g5g4"}],
-        romm_floor: 5,
+        room_floor: 5,
         bed: 2,
         tv: "Yes",
         internate: "No",
         other_facilities: ["Own Electric support","Doctor facility upon call with extra fees","Resturant on ground floor","Car parking facility"],
-        room_service: "Once per day"
+        room_service: "Once per day",
+        _id: "string",
+        createdAt: "string",
+        updatedAt: "string",
+        __v: 0
     },
 ]
 
@@ -107,7 +127,7 @@ const HotelRooms = () => {
                                             </div>
                                         </div>
                                         
-                                        <p>Floor No. {room.romm_floor}</p>
+                                        <p>Floor No. {room.room_floor}</p>
                                         <p>Total Bed: {room.bed}</p>
                                         <p>Television: {room.tv}</p>
                                         <p>Internet: {room.internate}</p>
