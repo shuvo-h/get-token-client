@@ -11,8 +11,8 @@ const OwnHotels = () => {
         if (user.user?.email) {
             HotelService.getOwnerAllHotel({owner_email : user.user?.email})
             .then(data=>{
-                console.log(data);
-                setOwnerHotels(data)
+                console.log(data.hotels);
+                setOwnerHotels(data.hotels)
             })
         }
     },[user.user?.email])
@@ -21,7 +21,7 @@ const OwnHotels = () => {
         <div>
             OwnHotels
             {
-                ownerHotels.map(hot=><li>{hot.hotelName}</li>)
+                ownerHotels?.map(hot=><li>{hot.hotelName}</li>)
             }
         </div>
     );
