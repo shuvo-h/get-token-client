@@ -4,12 +4,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import arrow from '../../../../assets/images/arrow.jpg';
 import logo from '../../../../assets/images/logo.png';
 import x from '../../../../assets/images/Setting.png';
-<<<<<<< HEAD
-=======
-import { setUserInfo } from '../../../../redux/slices/authSlice';
-import AuthService from '../../../../services/Auth.service';
-
->>>>>>> d5cb5b86c9330e6f524226af7af0f02b8d37ad92
 import Piechart from '../Piechart';
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -112,33 +106,7 @@ const OwnerDashboardSideNav = () => {
                            <button className=' ' >Search</button>
                        </div>
 
-                        <div className=' text-center flex gap-x-8 '>
-                            
-                            <div className=' text-center rounded w-64 h-32 bg-gray-500 pt-6'>
-                                <h2>Total Profit</h2>
-                                <h2>$2455</h2>
-                                <h5>Compared To Last month</h5>
-
-                            </div>
-                            <div className=' text-center rounded w-64 bg-gray-500 pt-6'>
-                                <h2>Total Cost</h2>
-                                <h2>$2455</h2>
-                                <h5>Compared To Last month</h5>
-
-                            </div>
-                            <div className=' text-center rounded w-64 bg-gray-500 pt-6'>
-                                <h2>Total Revenue</h2>
-                                <h2>$2455</h2>
-                                <h5>Compared To Last month</h5>
-
-                            </div>
-                            <div className=' text-center rounded w-64 bg-gray-500 pt-6'>
-                                <h2>Others</h2>
-                                <h2>$2455</h2>
-                                <h5>Compared To Last month</h5>
-
-                            </div>
-                        </div>
+                        
 
                         <div className='flex mt-5 gap-x-3'>
                             <div>
