@@ -4,12 +4,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import arrow from '../../../../assets/images/arrow.jpg';
 import logo from '../../../../assets/images/logo.png';
 import x from '../../../../assets/images/Setting.png';
-<<<<<<< HEAD
-=======
 import { setUserInfo } from '../../../../redux/slices/authSlice';
 import AuthService from '../../../../services/Auth.service';
-
->>>>>>> d5cb5b86c9330e6f524226af7af0f02b8d37ad92
 import Piechart from '../Piechart';
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
