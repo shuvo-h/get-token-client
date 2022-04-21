@@ -5,8 +5,10 @@ import { RootState } from '../../../redux/store/store';
 import OwnerService from '../../../services/ownerServices/hotel.service';
 import { addNewHotelType } from '../../../type/hotelType';
 import { hotelImgType } from '../../../type/ownerTypes';
+import HotelImage from '../../../assets/images/stock-hotel-photo.jpg';
 
-type hotelFormType = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> |  React.ChangeEvent<HTMLTextAreaElement>
+
+export type hotelFormType = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> |  React.ChangeEvent<HTMLTextAreaElement>
 
 
 
@@ -104,97 +106,110 @@ console.log(newHotelInfo);
     
 
     return (
-        <div className='mx-auto  w-max'>
-            <h1 className='text-xl font-semibold text-center my-2'>Fillup the form with your hotel information</h1>
-            <div>
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Hotel Name:</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block'  onChange={e=>handleInputChange(e,"regular")} type="text" name='hotelName' /><br />
-                </div>
+        <div className='flex  gap-x-6 justify-center bg-indigo-50'>
+                {/* <div> */}
+                <div className=' py-5 w-2/3'>
+                <h1 className='text-xl  justify-end font-semibold flex text-purple-700 text-opacity-100 my-2'>FILLUP THE FORM WITH YOUR HOTEL INFORMATION</h1>
+                <div className='space-y-3 '>
+                    <div className='drop-shadow-md flex justify-end items-center '>
+                        <p>Hotel Name:</p>
+                        <input style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid rounded focus:outline-none focus:border-teal-500  '  onChange={e=>handleInputChange(e,"regular")} type="text" name='hotelName'/>
+                    </div>
 
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Hotel Address:</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"regular")} type="text" name='address' /><br />
-                </div>
+                    <div className='drop-shadow-md flex justify-end items-center'>
+                        <p>Hotel Address:</p>
+                        <input style={{width:"400px",height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"regular")} type="text" name='address' /><br />
+                    </div>
+                    
+                    <div className='drop-shadow-md flex justify-end items-center'>
+                        <p>Choose your country:</p>
+                        <select style={{width:"400px",height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded'   name="country" id="" defaultValue="select country" onChange={e=>handleInputChange(e,"regular")}>
+                            <option value="select country" disabled>select country</option>
+                            {
+                                countries.map((item:any,id:number)=><option value={item.country} key={id}>{item.country}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='drop-shadow-md flex justify-end items-center'>
+                        <p>Choose your city</p>
+                        <select style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' name="city" id="" defaultValue={"select city"} onChange={e=>handleInputChange(e,"regular")}>
+                            <option value={"select city"} disabled>select city</option>
+                            {
+                                availableCities.map((city:any,id:number)=><option value={city} key={id}>{city}</option>)
+                            }
+                        </select>
+                    </div>
+
                 
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Choose your country:</p>
-                    <select style={{width:"500px"}} className='ml-2 border-2 border-solid block'  name="country" id="" defaultValue="select country" onChange={e=>handleInputChange(e,"regular")}>
-                        <option value="select country" disabled>select country</option>
+                    <div className='drop-shadow-md flex justify-end items-center'>
+                        <p>Total Room</p>
+                        <input style={{width:"400px",height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"room")} type="number" name='total' /><br />
+                    </div>
+                    <div className='drop-shadow-md flex justify-end items-center'>
+                        <p>Booked Room</p>
+                        <input style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"room")} type="number" name='booked' /><br />
+                    </div>
+                    <div className='drop-shadow-md flex justify-end items-center'>
+                        <p>Available Room</p>
+                        <input style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"room")} type="number" name='available' /><br />
+                    </div>
+
+
+                
+                    <div  className='drop-shadow-md flex justify-end items-center'>
+                        <p>Contact Email</p>
+                        <input style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"regular")} type="email" name='contact_email' /><br />
+
+                    </div>
+                    <div  className='drop-shadow-md flex justify-end items-center'>
+                        <p>Contact Phone number</p>
+                        <input style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"regular")} type="tel" name='contact_phone' /><br />
+                    </div>
+                    <div  className='drop-shadow-md flex justify-end items-center'>
+                        <p>Additional Contact  info</p>
+                        <input style={{width:"400px",height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"regular")} type="text" name='contact_Extra_info' /><br />
+                    </div>
+                    <div  className='drop-shadow-md flex justify-end items-center'>
+                        <p>Hotel Category</p>
+                        <select style={{width:"400px", height:"45px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' name="hotel_category" defaultValue={"select category"} id="" onChange={e=>handleInputChange(e,"regular")}>
+                            <option value={"select category"} disabled>select category</option>
+                            {
+                                hotelCategory.map((ctg:any,id:number)=><option value={ctg} key={id}>{ctg}</option>)
+                            }
+                        </select> <br />
+                    </div>
+                    
+
+                    <div className='flex items-center'>
+                    <p className='mx-7' >Images of hotel</p>
+                    <input style={{width:"400px", height:"45px"}} className='ml-2  border-2 border-solid block rounded ' onChange={(e)=>handleImageChange(e)} type="file" name='img_uri' multiple />
+                    <div className=''>
                         {
-                            countries.map((item:any,id:number)=><option value={item.country} key={id}>{item.country}</option>)
+                            images.map((image,id)=><p key={id}>{image.title}</p>)
                         }
-                    </select>
-                </div>
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Choose your city</p>
-                    <select style={{width:"500px"}} className='ml-2 border-2 border-solid block' name="city" id="" defaultValue={"select city"} onChange={e=>handleInputChange(e,"regular")}>
-                        <option value={"select city"} disabled>select city</option>
+                    </div>
+                    <div>
                         {
-                            availableCities.map((city:any,id:number)=><option value={city} key={id}>{city}</option>)
+                            images.map(image=><img src={image.uri}></img>)
                         }
-                    </select>
+                    </div> 
                 </div>
 
-               
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Total Room</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"room")} type="number" name='total' /><br />
-                </div>
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Booked Room</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"room")} type="number" name='booked' /><br />
-                </div>
-                <div className='drop-shadow-md flex justify-end'>
-                    <p>Available Room</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"room")} type="number" name='available' /><br />
+                <div  className='drop-shadow-md flex justify-end items-center'>
+                        <p>About hotel</p>
+                        <textarea  style={{width:"400px", height:"80px"}} className='ml-2 border-2 border-solid block focus:outline-none focus:border-teal-500 rounded' onChange={e=>handleInputChange(e,"regular")} name="description" id="" ></textarea> <br />
+                    </div>
+
+                    <button  onClick={handleHotelSubmit} type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 w-1/3  flex justify-center items-center mx-auto' >Submit</button>
                 </div>
 
-
-               
-                <div  className='drop-shadow-md flex justify-end'>
-                    <p>Contact Email</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"regular")} type="email" name='contact_email' /><br />
-
-                </div>
-                <div  className='drop-shadow-md flex justify-end'>
-                    <p>Contact Phone number</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"regular")} type="tel" name='contact_phone' /><br />
-                </div>
-                <div  className='drop-shadow-md flex justify-end'>
-                    <p>Additional Contact  info</p>
-                    <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"regular")} type="text" name='contact_Extra_info' /><br />
-                </div>
-                <div  className='drop-shadow-md flex justify-end'>
-                    <p>Hotel Category</p>
-                    <select style={{width:"500px"}} className='ml-2 border-2 border-solid block' name="hotel_category" defaultValue={"select category"} id="" onChange={e=>handleInputChange(e,"regular")}>
-                        <option value={"select category"} disabled>select category</option>
-                        {
-                            hotelCategory.map((ctg:any,id:number)=><option value={ctg} key={id}>{ctg}</option>)
-                        }
-                    </select> <br />
-                </div>
-                <div  className='drop-shadow-md flex justify-end'>
-                    <p>About hotel</p>
-                    <textarea  style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={e=>handleInputChange(e,"regular")} name="description" id="" ></textarea> <br />
-                </div>
-
-                <button style={{backgroundColor:"lightgrey", border:"1px solid"}} onClick={handleHotelSubmit} type="submit">Submit</button>
+                
             </div>
+                {/* </div> */}
 
-            <div>
-                <p >Images of hotel</p>
-                <input style={{width:"500px"}} className='ml-2 border-2 border-solid block' onChange={(e)=>handleImageChange(e)} type="file" name='img_uri' multiple /><br />
-                <div>
-                    {
-                        images.map((image,id)=><p key={id}>{image.title}</p>)
-                    }
-                </div>
-                <div>
-                    {
-                        images.map(image=><img src={image.uri}></img>)
-                    }
-                </div> 
+
+            <div className=' flex items-center '>
+                 < img src={HotelImage} />
             </div>
         </div>
     );

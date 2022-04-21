@@ -13,7 +13,7 @@ export const adminDashboardRoutes = [
         roles: ['*'] // Anyone can access
     },
     {
-        path: 'home',
+        path: '',
         title: 'DashboardHome',
         Componenet: DashboardHome,
         roles: ['*'] // Anyone can access
