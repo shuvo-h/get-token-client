@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteHotelById, fetchHotels } from '../../../../redux/slices/ownerHotelSlice';
 import { RootState } from '../../../../redux/store/store';
 import HotelService from '../../../../services/hotelPublicService/hotel.services';
 import { addNewHotelType } from '../../../../type/hotelType';
@@ -9,16 +10,15 @@ import EditOwnerHotel from './EditOwnerHotel';
 
 
 const OwnHotels = () => {
-    const [ownerHotels,setOwnerHotels] = useState<getOwnerHotelType[]>([]);
+    const dispatch = useDispatch()
     const [openEditOwnerModal,setOpenEditOwnerModal] = useState<string|null>(null);
 
     const user = useSelector((state:RootState)=>state.user);
+    const hotelsStore = useSelector((state:RootState)=>state.hotels)
+    
     useEffect(()=>{
         if (user.user?.email) {
-            HotelService.getOwnerAllHotel({owner_email : user.user?.email})
-            .then(data=>{
-                setOwnerHotels(data.hotels)
-            })
+            dispatch(fetchHotels({owner_email : user.user?.email}))
         }
     },[user.user?.email])
 
@@ -28,27 +28,24 @@ const OwnHotels = () => {
             HotelService.deleteOwnerSingleHotel(hotelID)
             .then(data=>{
                 if (data.success && data.result.deletedCount > 0) {
-                    const restHotels = ownerHotels.filter(hotel=> hotel.hotel_id !== hotelID)
-                    setOwnerHotels(restHotels)
+                    dispatch(deleteHotelById(hotelID))
                     alert("deleted confirmed")
                 }
             })
         }
-        
     }
 
     return (
         <div>
-            OwnHotels
             {
-                ownerHotels?.map(hotel=><div>
-                    <div  className='grid grid-cols-8 border my-2' key={hotel.hotel_id}>
+                hotelsStore.hotels?.map(hotel=><div  key={hotel.hotel_id}>
+                    <div  className='grid grid-cols-8 border my-2'>
                         <div>{hotel.hotelName}</div>
                         <div>{hotel.contact_email}</div>
                         <div>{hotel.contact_phone}</div>
-                        <div>{hotel.room.total}</div>
-                        <div>{hotel.room.booked}</div>
-                        <div>{hotel.room.available}</div>
+                        <div>{hotel.room?.total}</div>
+                        <div>{hotel.room?.booked}</div>
+                        <div>{hotel.room?.available}</div>
                         <button className='bg-sky-100' onClick={()=>setOpenEditOwnerModal(hotel.hotel_id)}>edit</button>
                         <button className='bg-pink-400' onClick={()=>handleDeleteHotel(hotel.hotel_id)}>delete</button>
                     </div>

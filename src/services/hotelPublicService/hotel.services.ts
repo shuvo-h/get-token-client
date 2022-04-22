@@ -13,10 +13,10 @@ type getSingleHotelType = {
     hotel: singleHotelType
     success: boolean
 }
-type getOwnerAllHotelPayloadType = {
+export type getOwnerAllHotelPayloadType = {
     owner_email : string
 }
-type getOwnerAllHotelType = {hotels: getOwnerHotelType[], success: boolean}
+export type getOwnerAllHotelType = {hotels: getOwnerHotelType[], success: boolean}
 
 
 

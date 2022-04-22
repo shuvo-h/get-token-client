@@ -1,4 +1,5 @@
 import React from "react";
+import HotelsForRooms from "../views/components/ownerComponents/Rooms/HotelsForRooms";
 
 const One  = React.lazy(()=>import("../views/components/ownerComponents/One"))
 const Two  = React.lazy(()=>import("../views/components/ownerComponents/Two"))
@@ -22,5 +23,5 @@ export const ownerDashboardRoutes = [
     {path: "total",name: "total",Component:Total, },
     {path: "addHotel",name: "AddNewHotel", Component:AddNewHotel,},
     { path: "hotels",name: "Hotels",Component:OwnHotels, },
-    { path: "rooms",name: "Hotels",Component:AddNewRoom, },
+    { path: "rooms",name: "Hotels",Component:HotelsForRooms, },
 ]

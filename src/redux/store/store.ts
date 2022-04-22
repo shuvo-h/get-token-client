@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import authSlice from '../slices/authSlice';
+import ownerHotelSlice from '../slices/ownerHotelSlice';
 
 export const store = configureStore({
   reducer: {
-    user: authSlice
+    user: authSlice,
+    hotels: ownerHotelSlice
   },
 });
 

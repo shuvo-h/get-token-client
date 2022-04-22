@@ -22,7 +22,6 @@ const AddNewHotel = () => {
     const [images,setImages] = useState<hotelImgType[]>([]);
     const [sendError,setSendError] = useState<string>("");
 
-console.log(newHotelInfo);
 
     // load all country information 
     useEffect(()=>{
@@ -99,9 +98,6 @@ console.log(newHotelInfo);
         }
 
     }
-
-    console.log(user.user);
-    
 
     return (
         <div className='mx-auto  w-max'>
